@@ -6,11 +6,12 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 22:42:04 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/09/05 22:14:29 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:16:56 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void	read_file_3(t_win *data, char ***nums, int *j, int fd)
 {
@@ -26,7 +27,7 @@ void	read_file_3(t_win *data, char ***nums, int *j, int fd)
 		*j = 0;
 		while ((*nums)[*j])
 		{
-			if ((*nums)[*j][0] != '\0' && (*nums)[*j][0] != '\n')
+			if ((*nums)[*j][0] != '\0')
 			{
 				data->z_matrix[data->t][*j] = ft_atoi((*nums)[*j]);
 				free((*nums)[*j]);
@@ -115,7 +116,7 @@ void	overlay(t_win *data)
 	mlx_string_put(data->image.win->mlx_ptr,
 		data->image.win->win_ptr, 15, 715, COLOR_PINK, "Scale up: 'S'");
 	mlx_string_put(data->image.win->mlx_ptr,
-		data->image.win->win_ptr, 15, 735, COLOR_PINK, "Scale down: 'P'");
+		data->image.win->win_ptr, 15, 735, COLOR_PINK, "Scale down: 'D'");
 }
 
 int	main(int argc, char **argv)
