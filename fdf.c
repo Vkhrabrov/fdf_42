@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 22:42:04 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/09/13 22:16:56 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/09/15 01:23:47 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,14 @@ void	read_file_3(t_win *data, char ***nums, int *j, int fd)
 	while (get_next_line(fd, &line))
 	{
 		*nums = ft_split(line, ' ');
-		data->z_matrix[data->t] = (int *)malloc(sizeof(int) * data->width);
+		data->z_matrix[data->t] = (int *)malloc(sizeof(int) * data->width + 1);
 		if (!data->z_matrix[data->t])
 			exit(safe_exit(data, 1));
 		*j = 0;
 		while ((*nums)[*j])
 		{
-			if ((*nums)[*j][0] != '\0')
-			{
-				data->z_matrix[data->t][*j] = ft_atoi((*nums)[*j]);
-				free((*nums)[*j]);
-			}
-			else
-				free((*nums)[*j]);
-			(*j)++;
+			data->z_matrix[data->t][*j] = ft_atoi((*nums)[*j]);
+			free((*nums)[*j]);
 		}
 		free(*nums);
 		free(line);
